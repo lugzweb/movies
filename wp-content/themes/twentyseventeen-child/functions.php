@@ -25,6 +25,14 @@ function custom_front_page($wp_query){
 	}
 }
 
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+function woo_remove_product_tabs( $tabs ) {
+
+	unset( $tabs['description'] );
+
+	return $tabs;
+}
+
 require_once get_theme_file_path( '/inc/custom-posts.php' );
 
 require_once get_theme_file_path( '/inc/registration.php' );

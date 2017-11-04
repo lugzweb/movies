@@ -151,3 +151,25 @@ function my_woocommerce_data_stores( $stores ) {
 
 	return $stores;
 }
+
+add_action('parse_query', 'custom_parse_query');
+function custom_parse_query($wp_query){
+
+	if(is_admin()) {
+		return;
+	}
+
+	if(!empty($wp_query->query['post_type']) && $wp_query->query['post_type'] == 'movie') {
+
+		global $product;
+
+		$slug = $wp_query->query['name'];
+
+		if ( $post = get_page_by_path( $slug, OBJECT, 'movie' ) ) {
+
+			$id = $post->ID;
+
+			$product = wc_get_product( $id );
+		}
+	}
+}
