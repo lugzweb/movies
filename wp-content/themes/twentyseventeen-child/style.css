@@ -3119,6 +3119,16 @@ object {
 	width: auto;
 }
 
+.woocommerce-page ul.products li.product {
+	width: 21.2%;
+	height: 350px;
+}
+
+.woocommerce-loop-product__title {
+	height: 39px;
+	overflow: hidden;
+}
+
 /*--------------------------------------------------------------
 19.0 Media Queries
 --------------------------------------------------------------*/

@@ -7,6 +7,24 @@ function enqueue_parent_styles() {
 	wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
 }
 
+add_action('pre_get_posts', 'custom_front_page');
+function custom_front_page($wp_query){
+
+	if(is_admin()) {
+		return;
+	}
+
+	if(is_front_page()) {
+		$wp_query->set('post_type', 'movie');
+		$wp_query->set('page_id', '');
+
+		$wp_query->is_page = 0;
+		$wp_query->is_singular = 0;
+		$wp_query->is_post_type_archive = 1;
+		$wp_query->is_archive = 1;
+	}
+}
+
 require_once get_theme_file_path( '/inc/custom-posts.php' );
 
 require_once get_theme_file_path( '/inc/registration.php' );
