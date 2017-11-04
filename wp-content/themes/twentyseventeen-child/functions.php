@@ -33,8 +33,20 @@ function woo_remove_product_tabs( $tabs ) {
 	return $tabs;
 }
 
+add_filter( 'body_class', 'add_body_class', 10, 2 );
+function add_body_class( $wp_classes, $extra_classes )
+{
+	$blacklist = array( 'has-sidebar' );
+
+	$wp_classes = array_diff( $wp_classes, $blacklist );
+
+	return array_merge( $wp_classes, (array) $extra_classes );
+}
+
 require_once get_theme_file_path( '/inc/custom-posts.php' );
 
 require_once get_theme_file_path( '/inc/registration.php' );
 
 require_once get_theme_file_path( '/inc/payment-gateways.php' );
+
+require_once get_theme_file_path( '/inc/wishlist.php' );

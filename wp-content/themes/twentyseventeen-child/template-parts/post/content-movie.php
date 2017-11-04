@@ -1,5 +1,6 @@
 <?php
 $user_id = get_current_user_id();
+$wishlist = get_user_meta($user_id, 'wishlist', true);
 ?>
 
 <li <?php post_class('product'); ?>>
@@ -14,5 +15,12 @@ $user_id = get_current_user_id();
     </a>
     <a rel="nofollow" href="/?add-to-cart=<?= get_the_ID(); ?>" class="button product_type_simple add_to_cart_button">
         Add to cart
+    </a>
+    <a rel="nofollow" href="/?add-to-wish=<?= get_the_ID(); ?>" class="button product_type_simple add_to_wish">
+		<?php if(in_array(get_the_ID(),$wishlist)) :?>
+            <i class="fa fa-heart" aria-hidden="true"></i>
+		<?php else: ?>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+		<?php endif; ?>
     </a>
 </li>

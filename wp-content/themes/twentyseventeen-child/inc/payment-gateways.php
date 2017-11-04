@@ -47,3 +47,6 @@ function custom_add_to_cart( $token, $product_id )
 
 	wp_redirect(site_url('my-account'));
 }
+
+add_filter( 'wc_add_to_cart_message', 'custom_add_to_cart_message' );
+function custom_add_to_cart_message() {}

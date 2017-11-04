@@ -3119,7 +3119,7 @@ object {
 	width: auto;
 }
 
-.woocommerce-page ul.products li.product {
+.woocommerce-page:not(.woocommerce-account) ul.products li.product {
 	width: 21.2%;
 	height: 350px;
 }
@@ -3160,6 +3160,24 @@ object {
 	transition: background 0.2s;
 }
 
+.has-sidebar.woocommerce-page #primary.content-area.twentyseventeen,
+.has-sidebar.woocommerce-page #secondary.widget-area,
+.page-two-column.woocommerce-account #content #primary .entry-content
+{
+	width: 100%;
+}
+
+.add_to_wish,
+.remove_wish {
+	box-shadow: none !important;
+	position: absolute;
+	bottom: -10px;
+	right: 5px;
+}
+
+.remove_wish {
+	bottom: 0;
+}
 /*--------------------------------------------------------------
 19.0 Media Queries
 --------------------------------------------------------------*/

@@ -40,6 +40,16 @@ if ( $product->is_in_stock() ) : ?>
             Add to cart
         </a>
 
+		<?php if(in_array(get_the_ID(),$wishlist)) :?>
+            <a rel="nofollow" href="/?remove-wish=<?= get_the_ID(); ?>" class="single_add_to_cart_button button alt">
+                Remove wishlist
+            </a>
+		<?php else: ?>
+            <a rel="nofollow" href="/?add-to-wish=<?= get_the_ID(); ?>" class="single_add_to_cart_button button alt">
+                Add to wishlist
+            </a>
+		<?php endif; ?>
+
 		<?php
 			/**
 			 * @since 2.1.0.
