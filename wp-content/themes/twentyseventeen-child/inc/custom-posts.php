@@ -136,13 +136,6 @@ function add_movie_fields( $movie_review_id, $movie_review ) {
 	}
 }
 
-add_filter('woocommerce_get_price','get_price',20,2);
-function get_price($price,$post){
-	if ($post->post->post_type === 'movie')
-		$price = get_post_meta($post->id, '_price', true);
-	return $price;
-}
-
 add_filter( 'woocommerce_data_stores', 'my_woocommerce_data_stores' );
 function my_woocommerce_data_stores( $stores ) {
 
@@ -159,7 +152,7 @@ function custom_parse_query($wp_query){
 		return;
 	}
 
-	if(!empty($wp_query->query['post_type']) && $wp_query->query['post_type'] == 'movie') {
+	if(!empty($wp_query->query['post_type']) && $wp_query->query['post_type'] == 'movie' && !empty($wp_query->query['name'])) {
 
 		global $product;
 

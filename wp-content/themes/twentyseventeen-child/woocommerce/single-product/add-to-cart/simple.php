@@ -40,7 +40,7 @@ if ( $product->is_in_stock() ) : ?>
             Add to cart
         </a>
 
-		<?php if(in_array(get_the_ID(),$wishlist)) :?>
+		<?php if(is_array($wishlist) && in_array(get_the_ID(),$wishlist)) :?>
             <a rel="nofollow" href="/?remove-wish=<?= get_the_ID(); ?>" class="single_add_to_cart_button button alt">
                 Remove wishlist
             </a>
