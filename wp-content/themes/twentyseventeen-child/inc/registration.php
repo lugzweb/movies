@@ -3,7 +3,7 @@ add_action( 'woocommerce_register_form_start', 'custom_register_fields' );
 function custom_register_fields() {?>
     <p class="form-row form-row-wide">
         <label for="skype"><?php _e( 'Skype', TEXTDOMAIN ); ?><span class="required">*</span></label>
-        <input type="text" class="input-text" name="skype" id="skype" value="<?php esc_attr_e( $_POST['skype'] ); ?>" />
+        <input type="text" class="input-text" name="skype" id="skype" value="<?= !empty( $_POST['skype'] ) ? esc_attr( $_POST['skype'] ) : ''; ?>" />
     </p>
     <div class="clear"></div>
 	<?php
